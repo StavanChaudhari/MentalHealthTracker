@@ -1,0 +1,1 @@
+java -jar target/MentalHealthTracker-1.0-SNAPSHOT.jar

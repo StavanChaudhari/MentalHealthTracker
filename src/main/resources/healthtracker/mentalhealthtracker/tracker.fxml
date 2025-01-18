@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="700.0" prefWidth="1438.0" spacing="10" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      xmlns="http://javafx.com/javafx/22" 
+      fx:controller="healthtracker.mentalhealthtracker.TrackerController">
+    <padding>
+        <Insets bottom="25" left="25" right="25" top="25" />
+    </padding>
+
+    <HBox spacing="20">
+        <VBox spacing="10">
+            <Label text="Date:" />
+            <DatePicker fx:id="datePicker" />
+
+            <Label text="Journal Entry:" />
+            <TextArea fx:id="journalArea" prefHeight="100" promptText="Write your journal entry here..." />
+
+            <Label text="Select your mood:" />
+            <HBox fx:id="moodButtonsBox" spacing="10" />
+
+            <Label text="Rate your mood (1-10):" />
+            <Slider fx:id="moodSlider" 
+                    majorTickUnit="1" 
+                    max="10" min="1" 
+                    minorTickCount="0" 
+                    showTickLabels="true" 
+                    showTickMarks="true" 
+                    snapToTicks="true" 
+                    value="5" />
+
+            <Label text="Screen time (hours):" />
+            <Spinner fx:id="screenTimeSpinner" editable="true" initialValue="0" max="24" min="0" />
+
+            <Label text="Sleep time (hours):" />
+            <Spinner fx:id="sleepTimeSpinner" editable="true" initialValue="8" max="24" min="0" />
+
+            <Button text="Save Entry" onAction="#saveEntry"/>
+            <Button fx:id="showPreviousEntriesButton" text="Show Previous Entries" onAction="#showPreviousEntries"/>
+
+            <HBox spacing="10">
+                <Button fx:id="showScreenTimeStatsButton" text="Show Screen Time Statistics" onAction="#showScreenTimeStats" />
+                <Button fx:id="showSleepTimeStatsButton" text="Show Sleep Time Statistics" onAction="#showSleepTimeStats"/>
+            </HBox>
+        </VBox>
+
+        <LineChart fx:id="moodChart"
+           title="Metrics Over Time" 
+           prefHeight="400.0" 
+           prefWidth="600.0"
+           legendSide="TOP"
+        >
+            <xAxis>
+                <CategoryAxis label="Date" 
+                    side="BOTTOM" 
+                    tickLabelRotation="45" />
+            </xAxis>
+            <yAxis>
+                <NumberAxis label="Value" 
+                    side="LEFT"
+                />
+            </yAxis>
+        </LineChart>
+
+        <TextArea fx:id="mentalHealthInfo" 
+                  editable="false" 
+                  prefWidth="400.0"
+                  prefHeight="400.0"
+                  wrapText="true"
+                  styleClass="info-panel">
+            <HBox.margin>
+                <Insets left="20" right="20" />
+            </HBox.margin>
+        </TextArea>
+    </HBox>
+    <TextArea fx:id="finalVerdict" editable="false" prefHeight="100.0" prefWidth="989.0" wrapText="true" />
+    <TextArea fx:id="nutritionSuggestion" editable="false" prefHeight="100.0" prefWidth="989.0" wrapText="true" />
+    <TextArea fx:id="workoutSuggestion" editable="false" prefHeight="100.0" prefWidth="989.0" wrapText="true" />
+</VBox>
