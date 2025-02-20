@@ -659,12 +659,12 @@ public class TrackerController {
     }
 
     private static class EntryData {
-        String moodType;
-        int moodRating;
-        int screenTime;
-        int sleepTime;
-        double mentalHealthIndex;
-        String entry;
+        final String moodType;
+        final int moodRating;
+        final int screenTime;
+        final int sleepTime;
+        final double mentalHealthIndex;
+        final String entry;
 
         EntryData(String moodType, int moodRating, int screenTime, int sleepTime, String entry) {
             this.moodType = moodType;
